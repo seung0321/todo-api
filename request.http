@@ -1,0 +1,25 @@
+###
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Node.js Express 웹 서버 시작하기",
+  "description": "Express를 활용해 내 로컬에서 웹 서버 구축하기"
+}
+
+###
+GET http://localhost:3000/tasks
+
+###
+GET http://localhost:3000/tasks/67aace7eb911fbbcb1d7dce3
+
+###
+PATCH http://localhost:3000/tasks/67aace7eb911fbbcb1d7dce6
+Content-Type: application/json
+{
+  "title": "Node.js Express UPdate",
+  "description": "Express를 활용해 내 로컬에서 웹 서버 구축하기"
+}
+
+###
+DELETE http://localhost:3000/tasks/67aace7eb911fbbcb1d7dce5
