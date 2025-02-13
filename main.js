@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
 import express from "express";
+import cors from "cors";
 import * as dotenv from "dotenv";
 import Task from "./task.js";
 
 dotenv.config();
 const app = express();
+
+// const corsOptions = {
+//   origin: ["https://tode.com"],
+// };
+app.use(cors());
 app.use(express.json());
 
 await mongoose.connect(process.env.DATABASE_URL);
@@ -16,8 +22,11 @@ function asyncHandler(handler) {
     } catch (e) {
       if (e.name === "CastError") {
         res.status(404).send({ message: "not find" });
+      } else if (e.name === "ValidationError") {
+        console.log("Error occured");
+        res.status(400).send({ message: e, message });
       } else {
-        res.status(500).send({ message: "not find" });
+        res.status(500).send({ message: e, message });
       }
     }
   };
